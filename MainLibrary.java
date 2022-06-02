@@ -1,14 +1,14 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class MainLibrary {
     private BufferedReader reader;
     private String line;
     private String components[] = null;
-    private HashMap<String, Song> mainLibrary = new HashMap<>();
+    private LinkedHashMap<String, Song> mainLibrary = new LinkedHashMap<>();
 
-    private HashMap<String, Song> readFile(String FileName) {
+    private LinkedHashMap<String, Song> readFile(String FileName) {
         //System.out.println("Method readFile");
         try {
             //System.out.println("readFile catch");
@@ -31,8 +31,8 @@ public class MainLibrary {
 
         String songID=components[0];
         String title=components[1];
-        String date=components[2];
-        String length=components[3];
+        Integer date=Integer.parseInt(components[2]);
+        Integer length=Integer.parseInt(components[3]);
         String genre=components[4];
         String cover=components[5];
         String description=components[6];
@@ -44,7 +44,7 @@ public class MainLibrary {
         this.mainLibrary.put(newSong.getSongID(),newSong);
     }
     
-    private PlayList createMainPlaylistHashMap (HashMap<String, Song> mainLibrary){
+    private PlayList createMainPlaylistHashMap (LinkedHashMap<String, Song> mainLibrary){
         
         return new PlayList("Main_Library", mainLibrary);
     }

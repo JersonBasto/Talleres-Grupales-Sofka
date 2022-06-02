@@ -1,34 +1,66 @@
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
+
 
 public class PlayList {
     private String playListName;
-    HashMap<String, Song> playList = new HashMap<>();
-
-    public PlayList(String playListName, HashMap<String, Song> playList) {
+    LinkedHashMap<String, Song> playList = new LinkedHashMap<>();
+    
+    
+    
+    public PlayList(String playListName, LinkedHashMap<String, Song> playList) {
         this.playListName = playListName;
         this.playList = playList;
-   
+
     }
+
     public String getPlayListName() {
         return playListName;
     }
+
     public void setPlayListName(String playListName) {
         this.playListName = playListName;
     }
-    public Collection<String> getKeys (){
+
+    public Collection<String> getKeys() {
         return this.playList.keySet();
     }
-    public ArrayList <String> getNames (){
-        Collection <Song> songs = this.playList.values();
-        ArrayList <String> songsNames = new ArrayList<>();
+
+    private Collection<Song> getValues() {
+        return this.playList.values();
+    }
+
+    public ArrayList<String> getNames() {
+        Collection<Song> songs = getValues();
+        ArrayList<String> songsNames = new ArrayList<>();
         for (Song song : songs) {
-            songsNames.add(song.getTitle());          
+            songsNames.add(song.getTitle());
         }
-        return songsNames; 
+        return songsNames;
 
     }
 
+    public void sortPlaylist(char sortKey) {
+        // Set<String, Song> set = this.playList.entrySet();
+        // Iterator iterator = set.iterator();
+    }
 
+    public void sortByDate() {
+        LinkedHashMap<Integer, Song> sortByDate = new LinkedHashMap<>();
+        Collection<Song> songs = getValues();
+        for (Song song : songs) {
+            sortByDate.put(song.getDate(), song);
+        }
+    }
+         
+    public void sortByLength() {
+        LinkedHashMap<Integer, Song> sortByLength = new LinkedHashMap<>();
+        Collection<Song> songs = getValues();
+        for (Song song : songs) {
+            sortByLength.put(song.getLength(), song);
+        }
+    }
+        
+    
 }

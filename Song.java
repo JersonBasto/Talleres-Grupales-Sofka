@@ -1,13 +1,13 @@
 public class Song {
     private String title;
     private String songID;
-    private String date;
-    private String length;
+    private Integer date;
+    private Integer length;
     private String genre;
     private String cover;
     private String description;
 
-    public Song(String title, String songID, String date, String length, String genre, String cover,
+    public Song(String title, String songID, Integer date, Integer length, String genre, String cover,
             String description) {
         this.title = title;
         this.songID = songID;
@@ -34,19 +34,19 @@ public class Song {
         this.songID = songID;
     }
 
-    public String getDate() {
+    public Integer getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Integer date) {
         this.date = date;
     }
 
-    public String getLength() {
+    public Integer getLength() {
         return length;
     }
 
-    public void setLength(String length) {
+    public void setLength(Integer length) {
         this.length = length;
     }
 
