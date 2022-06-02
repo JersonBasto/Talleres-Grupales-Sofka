@@ -10,6 +10,6 @@ public class Runing {
             System.out.println(mainLibrary.getKeys().get(x) + " : "+mainLibrary.getNames().get(x));
         }
 
-        System.out.println(mainLibrary.filterGenere());
+        System.out.println(mainLibrary.filterYear());
     }
 }

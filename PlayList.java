@@ -101,5 +101,28 @@ public class PlayList {
         }
         return generes;
     }
+    public ArrayList<String> filterYear() {
+        ArrayList<String> years = new ArrayList<>();
+        ArrayList<Integer> yearsBySong = new ArrayList<>();
+        Collection<Song> songs = getValues();
+        for (Song song : songs) {
+            yearsBySong.add(song.getDate());
+        }
+        List<Integer> unique = yearsBySong.stream().distinct().collect(Collectors.toList());
 
+        for (int i = 0; i < unique.size(); i++) {
+            System.out.println((i) + " : " + unique.get(i));
+        }
+
+        int indexGenre = in.intInput("Ingrese el indice del año");
+        int Year = unique.get(indexGenre);
+        int z = 0;
+        for (Song song : songs) {
+            if (song.getDate()==Year) {
+                years.add(z+" : "+song.getTitle());
+                z++;
+            }
+        }
+        return years;
+    }
 }
