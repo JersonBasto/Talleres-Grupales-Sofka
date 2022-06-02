@@ -14,7 +14,7 @@ public class MainLibrary {
             //System.out.println("readFile catch");
             reader = new BufferedReader(new FileReader(FileName));
             while ((line = reader.readLine()) != null) {
-                components = line.split(",");
+                components = line.split(";");
                 mapLine(components);
             }
             reader.close();
