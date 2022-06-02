@@ -23,8 +23,13 @@ public class PlayList {
         this.playListName = playListName;
     }
 
-    public Collection<String> getKeys() {
-        return this.playList.keySet();
+    public ArrayList<String> getKeys() {
+        Collection<Song> songs = getValues();
+        ArrayList<String> songsKeys = new ArrayList<>();
+        for (Song keys : songs) {
+            songsKeys.add(keys.getTitle());
+        }
+        return songsKeys;
     }
 
     private Collection<Song> getValues() {
