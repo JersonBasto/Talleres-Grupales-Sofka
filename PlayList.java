@@ -2,13 +2,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 
-
 public class PlayList {
     private String playListName;
     LinkedHashMap<String, Song> playList = new LinkedHashMap<>();
-    
-    
-    
+
     public PlayList(String playListName, LinkedHashMap<String, Song> playList) {
         this.playListName = playListName;
         this.playList = playList;
@@ -58,7 +55,7 @@ public class PlayList {
             sortByDate.put(song.getDate(), song);
         }
     }
-         
+
     public void sortByLength() {
         LinkedHashMap<Integer, Song> sortByLength = new LinkedHashMap<>();
         Collection<Song> songs = getValues();
@@ -66,6 +63,14 @@ public class PlayList {
             sortByLength.put(song.getLength(), song);
         }
     }
-        
-    
+
+    public Integer getSizeLibrary() {
+        int size = 0;
+        Collection<Song> songs = getValues();
+        for (Song song : songs) {
+            size += 1;
+        }
+        return size;
+    }
+
 }
