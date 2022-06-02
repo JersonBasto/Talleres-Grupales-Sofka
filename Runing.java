@@ -9,5 +9,7 @@ public class Runing {
         for (int x = 0; x < mainLibrary.getSizeLibrary(); x++) {
             System.out.println(mainLibrary.getKeys().get(x) + " : "+mainLibrary.getNames().get(x));
         }
+
+        System.out.println(mainLibrary.filterGenere());
     }
 }

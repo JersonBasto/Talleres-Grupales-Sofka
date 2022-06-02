@@ -1,10 +1,13 @@
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class PlayList {
     private String playListName;
     LinkedHashMap<String, Song> playList = new LinkedHashMap<>();
+    Input in = new Input();
 
     public PlayList(String playListName, LinkedHashMap<String, Song> playList) {
         this.playListName = playListName;
@@ -71,6 +74,32 @@ public class PlayList {
             size += 1;
         }
         return size;
+    }
+
+    public ArrayList<String> filterGenere() {
+        ArrayList<String> generes = new ArrayList<>();
+        ArrayList<String> generesBySong = new ArrayList<>();
+        Collection<Song> songs = getValues();
+        for (Song song : songs) {
+            generesBySong.add(song.getGenre());
+        }
+        List<String> unique = generesBySong.stream().distinct().collect(Collectors.toList());
+
+        for (int i = 0; i < unique.size(); i++) {
+            System.out.println((i) + " : " + unique.get(i));
+        }
+
+        int indexGenre = in.intInput("Ingrese el indice del genero");
+        String Genre = unique.get(indexGenre);
+        int z = 0;
+        for (Song song : songs) {
+            System.out.println(song.getGenre() + " : " + Genre);
+            if (song.getGenre().equals(Genre)) {
+                generes.add(z+" : "+song.getTitle());
+                z++;
+            }
+        }
+        return generes;
     }
 
 }
