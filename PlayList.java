@@ -27,7 +27,7 @@ public class PlayList {
         Collection<Song> songs = getValues();
         ArrayList<String> songsKeys = new ArrayList<>();
         for (Song keys : songs) {
-            songsKeys.add(keys.getTitle());
+            songsKeys.add(keys.getSongID());
         }
         return songsKeys;
     }
