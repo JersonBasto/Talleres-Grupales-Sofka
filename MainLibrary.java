@@ -29,8 +29,8 @@ public class MainLibrary {
 
     private void mapLine(String[] components) {
 
-        String title=components[0];
-        String songID=components[1];
+        String songID=components[0];
+        String title=components[1];
         String date=components[2];
         String length=components[3];
         String genre=components[4];
