@@ -33,7 +33,7 @@ public class Input {
         return str;
     }
 
-    public String InputBoolean(String mensaje) {
+    public String inputBoolean(String mensaje) {
         String estado = "";
         while (estado.equals("")) {
             System.out.println(mensaje);
@@ -51,4 +51,7 @@ public class Input {
         }
         return estado;
     }
+    //public String inputIndex(String mensaje, int indexSize){
+
+    //}
 }
