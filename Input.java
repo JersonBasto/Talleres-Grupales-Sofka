@@ -51,7 +51,23 @@ public class Input {
         }
         return estado;
     }
-    //public String inputIndex(String mensaje, int indexSize){
-
-    //}
+    public Integer inputIndex(String mensaje, int indexSize){
+        int inte = -1;
+        String recoger;
+        while (inte == -1) {
+            System.out.println(mensaje);
+            recoger = sc.nextLine();
+            if (!recoger.matches("[0-9]*")) {
+                System.err.println("Por favor escriba un numero");
+                inte = -1;
+            } else {
+                inte = Integer.parseInt(recoger);
+                if(inte>indexSize || inte<0){
+                    System.err.println("El numero esta fuera de rango, introduzca un numero valido");
+                    inte=-1;
+                }
+            }
+        }
+        return inte;
+    }
 }
