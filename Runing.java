@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Scanner;
 
 public class Runing {
@@ -12,7 +14,8 @@ public class Runing {
         Input in = new Input();
         boolean sporafy = true;
         System.out.println("Welcome to sporafy\nThis is the list of songs currently available in the library");
-        mainLibrary.printPlaylist();
+        //mainLibrary.printPlaylist();
+        //System.out.println(playlistLibrary);
 
         /*
          * System.out.println("Ingrese una lista de id para crear una nueva Play list");
@@ -59,14 +62,15 @@ public class Runing {
                     System.out.println("The play list "+playlistName+" has been created");
                 }
                 case 2 -> {
-                    int index2;
+                    int index2 = 1;
                     System.out.println("This are playlists available at the moment:");
-                    playlistLibrary.keySet().forEach(s -> System.out.println(s));
+                    //playlistLibrary.keySet().forEach(s -> System.out.println(s));
+                    indexPlaylist(playlistLibrary);
                     System.out.println("Type the exact name of the play list you would like to interact to");
                     String currentPlaylist = sc.nextLine();
                     if (playlistLibrary.get(currentPlaylist)!=null){
                         
-                        switch (index){
+                        switch (index2){
 
                         }
                     }
@@ -78,4 +82,11 @@ public class Runing {
         }
         sc.close();
     }
+    public static String indexPlaylist (LinkedHashMap<String, PlayList> playlistLibrary, Input in){
+        List <String> listOfPlaylist = new ArrayList<String>();
+        playlistLibrary.keySet().forEach(s -> listOfPlaylist.add(s));
+        listOfPlaylist.forEach(s -> System.out.println(listOfPlaylist.indexOf(s)+". "+s));
+        int index = in.intInput("--------------------------------------------");
+    } 
 }
+
