@@ -5,11 +5,29 @@ public class Runing {
         MainLibrary library = new MainLibrary();
         PlayList mainLibrary = library.createMainLibrary("C:Libro1.csv");
         System.out.println(mainLibrary.getSizeLibrary());
+        Input in = new Input();
 
-        for (int x = 0; x < mainLibrary.getSizeLibrary(); x++) {
-            System.out.println(mainLibrary.getKeys().get(x) + " : "+mainLibrary.getNames().get(x));
+        System.out.println("A continuacion el usuario creara una playlist");
+        System.out.println("Se presentara 3 opciones para crear la playlist ");
+        System.out.println("Seleccionar las cancion desde la biblioteca : 0 ");
+        System.out.println("Crear una biblioteca filtrando por genero : 1");
+        System.out.println("Crear una biblioteca filtrando por año : 2");
+
+        int indice = in.intInput("Ingrese el indice seleccionado");
+
+        switch (indice) {
+            case 0 -> {
+                for (int x = 0; x < mainLibrary.getSizeLibrary(); x++) {
+                    System.out.println(mainLibrary.getKeys().get(x) + " : " + mainLibrary.getNames().get(x));
+                }
+            }
+            case 1 -> {
+                System.out.println(mainLibrary.filterGenere());
+            }
+            case 2 -> {
+                System.out.println(mainLibrary.filterYear());
+            }
         }
 
-        System.out.println(mainLibrary.filterYear());
     }
 }
