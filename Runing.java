@@ -17,39 +17,15 @@ public class Runing {
         // mainLibrary.printPlaylist();
         // System.out.println(playlistLibrary);
 
-        /*
-         * System.out.println("Ingrese una lista de id para crear una nueva Play list");
-         * String setOfSongs = sc.nextLine();
-         * System.out.println("Type the name for the new playlist");
-         * String playlistName = sc.nextLine();
-         * 
-         * playlistLibrary.put(playlistName,new PlayList(playlistName, setOfSongs,
-         * mainLibrary));
-         * System.out.println("The play list has been created");
-         * 
-         * System.out.println("the list of play list is "+playlistLibrary.keySet());
-         * 
-         * System.out.println("The play list " + playlistName + " contains: ");
-         * 
-         * playlistLibrary.get(playlistName).printPlaylist();
-         */
-
         while (sporafy = true) {
             System.out.println("----------------------Main menu----------------------");
             System.out.println("--To select an option type a number between 1 and 3");
-            System.out.println("----Create a play list from a set of songs of your choise: type 1");
-            /*
-             * System.out.println("----Filter an existing playlist by year of relase: 2");
-             * System.out.println("----Filter an existing playlist by genre: 3");
-             * System.out.println("----Sort an existing playlist by year of relase: 4");
-             * System.out.println("----Sort an existing playlist by year of relase: 5");
-             * System.out.println("----Show the existing playlist: 6");
-             */
-            System.out.println("----Select an playlist to interact: 2");
-            System.out.println("----Show the songs currently available in the library: 3");
-            System.out.println("----End the program: 0");
+            System.out.println("--1--Create a play list from a set of songs of your choise");
+            System.out.println("--2--Select an playlist to interact");
+            System.out.println("--3--Show the songs currently available in the library");
+            System.out.println("--0--End the program");
 
-            int index = in.intInput("--------------------------------------------");
+            int index = in.intInput("----------------------------------------------------");
 
             switch (index) {
                 case 0 -> {
@@ -66,13 +42,57 @@ public class Runing {
                 }
                 case 2 -> {
                     int index2 = 1;
-                    System.out.println("This are playlists available at the moment:");
-                    // playlistLibrary.keySet().forEach(s -> System.out.println(s));
+                    System.out.println("-----------------------------------------------------"+
+                                     "\n--------------------Playlist menu--------------------");
+                    System.out.println("----This are playlists available at the moment:");
                     String currentPlaylist = indexPlaylist(playlistLibrary, in);
+                    System.out.println("--The selected playlist is :"+currentPlaylist);
+                    System.out.println("--To select an option type a number between 1 and 6");
+                    System.out.println("--1--Filter the playlist by year of relase");
+                    System.out.println("--2--Filter the playlist by genre");
+                    System.out.println("--3--Sort the playlist by year of relase");
+                    System.out.println("--4--Sort the playlist by genre");
+                    System.out.println("--5--Print playlist's songs");
+                    System.out.println("--6--Show the existing playlist");
+                    System.out.println("--0--Return to main menu");
+
+                    
+
                     switch (index2) {
+                        case 1 ->{
+                            String playListName = currentPlaylist+" filterd by date";
+                            PlayList dinamicPlaylist = playlistLibrary.get(currentPlaylist).filterByDate(playListName);
+                            System.out.println("The songs relesed in the year selected are");
+                            dinamicPlaylist.printPlaylist();
+                            int answ = in.intInput("Would you like to save the play list?/nType 1 to save the play list/nType 2 to discartit");
+                            if (answ==1){
+                            System.out.println("Type the name for the new playlist");
+                            String playlistName = sc.nextLine();
+                            playlistLibrary.put(playlistName, dinamicPlaylist);
+                            System.out.println("The play list " + playlistName + " has been created");
+                            }
+
+                        }
+                        case 2 ->{
+                            
+                        }
+                        case 3 ->{
+                            
+                        }
+                        case 4 ->{
+                            
+                        }
+                        case 5 ->{
+                            
+                        }
+                        case 6 ->{
+                            
+                        }
+                        case 0 ->{
+                            
+                        }
 
                     }
-
                 }
                 case -1 -> {
 
@@ -86,7 +106,7 @@ public class Runing {
         List<String> listOfPlaylist = new ArrayList<String>();
         playlistLibrary.keySet().forEach(s -> listOfPlaylist.add(s));
         listOfPlaylist.forEach(s -> System.out.println(listOfPlaylist.indexOf(s) + ". " + s));
-        int index = in.intInput("Enter the index of the playlist you whish to \n interact to(for exaple, enter 0 for "
+        int index = in.intInput("Enter the index of the playlist you whish to \ninteract to(for exaple, enter 0 for "
                 + listOfPlaylist.get(0) + " )");
         return listOfPlaylist.get(index);
     }
