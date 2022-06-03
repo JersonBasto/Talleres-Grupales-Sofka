@@ -11,4 +11,4 @@ El archivo principal se llama running.java, en este archivo se despliega un menu
 
 Al seleccionar la opcion 1, se despliega el menu para crear la playlist:
 
-![Image text]([https://github.com/JersonBasto/Talleres-Grupales-Sofka/blob/main/images/Captura.PNG](https://github.com/JersonBasto/Talleres-Grupales-Sofka/blob/main/images/CreatePlayList.png))
+![Image text](https://github.com/JersonBasto/Talleres-Grupales-Sofka/blob/main/images/CreatePlayList.png)
