@@ -8,6 +8,12 @@ public class MainLibrary {
     private String components[] = null;
     private LinkedHashMap<String, Song> mainLibrary = new LinkedHashMap<>();
 
+    /**
+     * Form a csv file extract the infrmation to create songs and fill a 
+     * hashmap(string, song) to be used in the contruction of the main library 
+     * @param FileName
+     * @return A hashmap with all the songs in csv
+     */
     private LinkedHashMap<String, Song> readFile(String FileName) {
         //System.out.println("Method readFile");
         try {
@@ -27,6 +33,10 @@ public class MainLibrary {
         return this.mainLibrary;
     }
 
+    /**
+     * Construc a song from a csv line and adds it to the main libray playlist
+     * @param components
+     */
     private void mapLine(String[] components) {
 
         String songID=components[0];
@@ -43,13 +53,14 @@ public class MainLibrary {
         Song newSong = new Song(title, songID, date, length, genre, cover, description);
         this.mainLibrary.put(newSong.getSongID(),newSong);
     }
+
     
-    private PlayList createMainPlaylistHashMap (LinkedHashMap<String, Song> mainLibrary){
+    private PlayList createMainPlaylist (LinkedHashMap<String, Song> mainLibrary){
         
         return new PlayList("Main_Library", mainLibrary);
     }
     public PlayList createMainLibrary (String Filename){
-        return createMainPlaylistHashMap(readFile(Filename));
+        return createMainPlaylist(readFile(Filename));
     }
     
 
