@@ -5,14 +5,14 @@ public class Input {
     Scanner sc = new Scanner(System.in);
 
     public int intInput(String mensaje) {
-        int inte = 0;
+        int inte = -1;
         String recoger;
-        while (inte == 0) {
+        while (inte == -1) {
             System.out.println(mensaje);
             recoger = sc.nextLine();
             if (!recoger.matches("[0-9]*")) {
                 System.err.println("Por favor escriba un numero");
-                inte = 0;
+                inte = -1;
             } else {
                 inte = Integer.parseInt(recoger);
             }
