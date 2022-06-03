@@ -62,7 +62,7 @@ public class Input {
                 inte = -1;
             } else {
                 inte = Integer.parseInt(recoger);
-                if(inte>indexSize || inte<0){
+                if(inte>indexSize-1 || inte<0){
                     System.err.println("El numero esta fuera de rango, introduzca un numero valido");
                     inte=-1;
                 }
