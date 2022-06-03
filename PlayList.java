@@ -6,13 +6,17 @@ import java.util.stream.Collectors;
 
 public class PlayList {
     private String playListName;
-    LinkedHashMap<String, Song> playList = new LinkedHashMap<>();
+    public LinkedHashMap<String, Song> playlist = new LinkedHashMap<>();
     Input in = new Input();
 
     public PlayList(String playListName, LinkedHashMap<String, Song> playList) {
         this.playListName = playListName;
-        this.playList = playList;
+        this.playlist = playList;
 
+    }
+    public PlayList(String playListName, String setOfSongs, PlayList initialPlaylist) {
+        this.playListName = playListName;
+        this.playlist = mapOfSongs(setOfSongs, initialPlaylist);
     }
 
     public String getPlayListName() {
@@ -23,39 +27,25 @@ public class PlayList {
         this.playListName = playListName;
     }
 
-    public List<Song> getValues() {
-        return new ArrayList<Song>(this.playList.values());
+    private List<Song> getValues() {
+        return new ArrayList<Song>(this.playlist.values());
     }
 
-    public ArrayList<String> getKeys() {
-        List<Song> songs = getValues();
-        ArrayList<String> songsKeys = new ArrayList<>();
-        songs.forEach(s -> songsKeys.add(s.getSongID()));
-        return songsKeys;
-    }
-
-    public ArrayList<String> getNames() {
-        List<Song> songs = getValues();
-        ArrayList<String> songNames = new ArrayList<>();
-        songs.forEach(s -> songNames.add(s.getSongID()));
-        return songNames;
-    }
-
-    public ArrayList<String> getGener() {
+    private ArrayList<String> getGener() {
         List<Song> songs = getValues();
         ArrayList<String> songGeners = new ArrayList<>();
         songs.forEach(s -> songGeners.add(s.getGenre()));
         return songGeners;
     }
 
-    public ArrayList<Integer> getDate() {
+    private ArrayList<Integer> getDate() {
         List<Song> songs = getValues();
         ArrayList<Integer> songDates = new ArrayList<>();
         songs.forEach(s -> songDates.add(s.getDate()));
         return songDates;
     }
 
-    public LinkedHashMap<String, Song> filterByGenre() {
+    public PlayList filterByGenre(String playListName) {
         LinkedHashMap<String, Song> filterdByGenre = new LinkedHashMap<>();
         ArrayList<String> genresBySong = getGener();
         List<String> unique = genresBySong.stream().distinct().collect(Collectors.toList());
@@ -70,10 +60,10 @@ public class PlayList {
                 filterdByGenre.put(s.getSongID(), s);
             }
         });
-        return filterdByGenre;
+        return new PlayList(playListName, filterdByGenre);
     }
 
-    public LinkedHashMap<String, Song> filterByDate() {
+    public PlayList filterByDate(String playListName) {
         LinkedHashMap<String, Song> filterdByDate = new LinkedHashMap<>();
         ArrayList<Integer> datesBySong = getDate();
         List<Integer> unique = datesBySong.stream().distinct().collect(Collectors.toList());
@@ -88,55 +78,54 @@ public class PlayList {
                 filterdByDate.put(s.getSongID(), s);
             }
         });
-        return filterdByDate;
+        return new PlayList(playListName, filterdByDate);
     }
 
-    /*
-     * public ArrayList<String> filterYear() {
-     * ArrayList<String> years = new ArrayList<>();
-     * ArrayList<Integer> yearsBySong = new ArrayList<>();
-     * Collection<Song> songs = getValues();
-     * for (Song song : songs) {
-     * yearsBySong.add(song.getDate());
-     * }
-     * List<Integer> unique =
-     * yearsBySong.stream().distinct().collect(Collectors.toList());
-     * 
-     * for (int i = 0; i < unique.size(); i++) {
-     * System.out.println((i) + " : " + unique.get(i));
-     * }
-     * 
-     * int indexGenre = in.intInput("Ingrese el indice del año");
-     * int Year = unique.get(indexGenre);
-     * int z = 0;
-     * for (Song song : songs) {
-     * if (song.getDate() == Year) {
-     * years.add(z + " : " + song.getTitle());
-     * z++;
-     * }
-     * }
-     * return years;
-     * }
-     */
-
     public /* PlayList */void sortByDate() {
-        List<Song> list = new ArrayList<Song>(this.playList.values());
+        List<Song> list = new ArrayList<Song>(this.playlist.values());
         list.sort(Comparator.comparingInt(Song::getDate));
-        this.playList.clear();
+        this.playlist.clear();
         list.forEach(s -> {
-            this.playList.put(s.getSongID(), s);
+            this.playlist.put(s.getSongID(), s);
         });
 
     }
 
     public /* PlayList */void sortByLength() {
-        List<Song> list = new ArrayList<Song>(this.playList.values());
+        List<Song> list = new ArrayList<Song>(this.playlist.values());
         list.sort(Comparator.comparingInt(Song::getLength));
-        this.playList.clear();
+        this.playlist.clear();
         list.forEach(s -> {
-            this.playList.put(s.getSongID(), s);
+            this.playlist.put(s.getSongID(), s);
         });
 
+    }
+    
+    public void printPlaylist (){
+        List <Song> songs = getValues();
+        songs.forEach(s -> System.out.println(s.getSongID()+"."+s.getTitle()+
+        "\nGenre: "+s.getGenre()+
+        "\nYear relased: "+s.getDate()+
+        "\nLength (seconds): "+s.getLength()+"\n----------------------------"));
+    }
+    public void printPlaylistDate (){
+        List <Song> songs = getValues();
+        songs.forEach(s -> System.out.println(s.getSongID()+"."+s.getTitle()+
+        "\nYear relased: "+s.getDate()+"\n"));
+    }
+
+    private LinkedHashMap<String, Song> mapOfSongs (String setOfSongs, PlayList initialPlaylist){
+        LinkedHashMap<String, Song> mapOfSongs = new LinkedHashMap<>();
+        String [] songsId = setOfSongs.split(",");
+        for (String song : songsId) {
+            if (initialPlaylist.playlist.get(song)!=null){
+            mapOfSongs.put(song, initialPlaylist.playlist.get(song));
+            }
+            else {
+            System.out.println("The value "+song+" does not exist in the current playlist");    
+            }
+        }
+        return mapOfSongs;
     }
 
 }
