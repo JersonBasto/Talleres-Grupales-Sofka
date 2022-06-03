@@ -11,6 +11,7 @@ public class Runing {
         MainLibrary library = new MainLibrary();
         PlayList mainLibrary = library.createMainLibrary("C:Libro1.csv");
         playlistLibrary.put(mainLibrary.getPlayListName(), mainLibrary);
+        mainLibrary.printPlaylist();
         Input in = new Input();
         boolean sporafy = true;
         System.out.println("Welcome to sporafy\nThis is the list of songs currently available in the library");
@@ -90,11 +91,10 @@ public class Runing {
                         case 0 -> {
                             break;
                         }
-
                     }
                 }
-                case -1 -> {
-
+                case 3 -> {
+                    mainLibrary.printPlaylist();
                 }
             }
         }
@@ -115,6 +115,11 @@ public class Runing {
         return listOfPlaylist;
     }
 
+    /*
+     * 
+     * 
+     * 
+     */
     public static int printMainManu(Input in) {
         System.out.println("----------------------Main menu----------------------");
         System.out.println("--To select an option type a number between 1 and 3");
