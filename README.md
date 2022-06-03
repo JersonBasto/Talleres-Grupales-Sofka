@@ -30,7 +30,9 @@ Al estar en este sub menu el usuario creara una playlist al filtrar por genero o
 
 Tiene la opcion de ordenarlas por duracion y fecha, esta opcion imprime las canciones dentro de la lista seleccionada de forma ordenada segun la seleccion del usuario.
 
+La quinta opcion imprime la informacion de las canciones presentes en la playlist.
 
+Al terminar el proceso del sub menu de la opcion 2, retorna al menu principal y el usuario tiene la opcion de seleccionar de nuevo alguna opciones o simplemente salir del programa, al seleccionar la opcion 3, este imprime todas las canciones de la playlist principal.
 
 
 
