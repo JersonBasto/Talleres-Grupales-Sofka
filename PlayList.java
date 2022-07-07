@@ -4,6 +4,12 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Class that contains methods to create and manage play lists
+ * 
+ * @author Isan Eduardo Franco Miranda <isan.9.9f@gmail.com>
+ * @version 1.0.0
+ */
 public class PlayList {
     private String playListName;
     public LinkedHashMap<String, Song> playlist = new LinkedHashMap<>(); // The set of songs the play list has got
@@ -180,6 +186,7 @@ public class PlayList {
                 "\nYear relased: " + s.getDate() +
                 "\nLength (seconds): " + s.getLength() + "\n----------------------------"));
     }
+
     /**
      * Print from the playlist a set of information usefull for the user like this
      * ----------------------------
@@ -195,8 +202,10 @@ public class PlayList {
     }
 
     /**
-     * Given a set of Song IDs creates a hashmap (string, song) such that the key values are the songs names and
+     * Given a set of Song IDs creates a hashmap (string, song) such that the key
+     * values are the songs names and
      * the values are the songs selected
+     * 
      * @param setOfSongs
      * @param initialPlaylist
      * @return A hashmap to use in the costruction of a playlsit

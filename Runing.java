@@ -3,6 +3,16 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Main class of the app
+ * Manages the library of music
+ * 
+ * The app gathers the information from a csv data base and arrange it into a
+ * map containing all the information
+ * 
+ * @author Isan Eduardo Franco Miranda <isan.9.9f@gmail.com>
+ * @version 1.0.0
+ */
 public class Runing {
 
     public static void main(String[] args) {
@@ -130,6 +140,5 @@ public class Runing {
 
         return in.inputIndex("----------------------------------------------------", 4);
     }
-    
 
 }
